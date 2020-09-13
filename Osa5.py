@@ -10,7 +10,7 @@ conn = sqlite3.connect("tasklist.db")
 
 c = conn.cursor()
 
-Poista tietokantataulu nimeltä tasks, jos sellainen on jo olemassa
+# Poista tietokantataulu nimeltä tasks, jos sellainen on jo olemassa
 c.execute("DROP TABLE IF EXISTS tasks")
 
 # Luo taulu
