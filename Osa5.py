@@ -15,8 +15,7 @@ c.execute("DROP TABLE IF EXISTS tasks")
 
 # Luo taulu
 sql = '''CREATE TABLE tasks (
-    id int,
-    task char(20)
+    task VARCHAR(255)
 )'''
 c.execute(sql)
 

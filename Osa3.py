@@ -1,4 +1,4 @@
-# Uuden ikkunan vaaminen 
+# Uuden ikkunan avaaminen 
 from tkinter import *
 
 root = Tk()
