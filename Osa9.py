@@ -1,3 +1,6 @@
+from tkinter import *
+import sqlite3
+
 # Kirjoitetaan tietokantaan uusi rivi
 def submit():
 
@@ -18,3 +21,6 @@ conn.commit()
 conn.close()
 
 task.delete(0, END)
+
+# Käynistä root niminen ikkuna.
+root.mainloop()

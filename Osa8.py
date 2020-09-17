@@ -31,4 +31,7 @@ def query():
 
     conn.commit()
 
-    conn.close()    
+    conn.close()
+    
+# Käynistä root niminen ikkuna.
+root.mainloop()    
