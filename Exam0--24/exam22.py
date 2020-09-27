@@ -79,7 +79,7 @@ def edit():
         task_label_editor.insert(0, record[0])
         
     # Create a Save Button To Save Edited Record
-    edit_btn = Button(editor, text="Talenna Tietue", command=update, fg="green")
+    edit_btn = Button(editor, text="Talenna Muutokset", command=update, fg="green")
     edit_btn.grid(row=6, column=0, columnspan=2, pady=10, padx=10, ipadx=140)
 
 
@@ -157,19 +157,19 @@ task_label_label = Label(root, text="Tehtävän Nimi")
 task_label_label.grid(row=0, column=0, pady=(10, 0))
 
 # Create Submit Button
-submit_btn = Button(root, text="Lisää Tietue Tietokantaan", command=submit, fg="green")
+submit_btn = Button(root, text="Lisää Tehtävä Tietokantaan", command=submit, fg="green")
 submit_btn.grid(row=6, column=0, columnspan=2, pady=10, padx=10, ipadx=100)
 
 # Create a Query Button
-query_btn = Button(root, text="Näytä Tietueet", command=query, fg="brown")
+query_btn = Button(root, text="Näytä Tehtävät", command=query, fg="brown")
 query_btn.grid(row=7, column=0, columnspan=2, pady=10, padx=10, ipadx=137)
 
 # Create a Delete Button
-delete_btn = Button(root, text="Poista Tietueet", command=delete, fg="red")
+delete_btn = Button(root, text="Poista Tehtävät", command=delete, fg="red")
 delete_btn.grid(row=10, column=0, columnspan=2, pady=10, padx=10, ipadx=136)
 
 # Create an Update Button
-edit_btn = Button(root, text="Muokkaa Tietueita", command=edit, fg="blue")
+edit_btn = Button(root, text="Muokkaa Tehtäviä", command=edit, fg="blue")
 edit_btn.grid(row=11, column=0, columnspan=2, pady=10, padx=10, ipadx=130)
 
 # Commit Changes
@@ -186,13 +186,13 @@ l = Label(root, text = "Käyttäjätunnus:")
 l.grid(row = 13, column = 0)
 e = Entry(root, width = 30, bg="orange", fg="black", borderwidth=5)
 e.grid(row = 13, column = 1)
-e.insert(0, "Nimi: ")
+#e.insert(0, "Nimi: ")
 # rivi 1 -------------------------------------------
 l2 = Label(root, text = "Salasana:")
 l2.grid(row = 14, column = 0)
 e2 = Entry(root, width = 30, show = '*', bg="orange", fg="black", borderwidth=5)
 e2.grid(row = 14, column = 1)
-e2.insert(0, "Salasana: ")
+#e2.insert(0, "Salasana: ")
 # rivi 2 -------------------------------------------
 b = Button(root, text = "KIRJAUDU SISÄÄN", fg="green")
 b.grid(row = 15, column = 1)
