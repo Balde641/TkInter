@@ -14,7 +14,7 @@ l2.grid(row = 1, column = 0)
 e2 = Entry(root, width = 30, show = '*')
 e2.grid(row = 1, column = 1)
 # rivi 2 -------------------------------------------
-b = Button(root, text = "Enter")
+b = Button(root, text = "Log in")
 b.grid(row = 2, column = 1)
 
 
