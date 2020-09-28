@@ -1,12 +1,12 @@
 # Update A Record With SQLite: Have a look at 16-->17-->18-->19
 
 from tkinter import *
-from PIL import ImageTk,Image
+#from PIL import ImageTk,Image
 import sqlite3
 
 root = Tk()
 root.title('Learn To code at Codemy.com')
-root.iconbitmap('/Users/baldez/Documents/GitHub/TkInter/images/Balde4.png')
+#root.iconbitmap('/Users/baldez/Documents/GitHub/TkInter/images/Balde4.png')
 root.geometry("400x500")
 
 # Create a database or connect to one

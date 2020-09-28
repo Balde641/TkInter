@@ -184,13 +184,13 @@ conn.close()
 # rivi 0 -------------------------------------------
 l = Label(root, text = "Käyttäjätunnus:")
 l.grid(row = 13, column = 0)
-e = Entry(root, width = 30, bg="orange", fg="black", borderwidth=5)
+e = Entry(root, width = 30, bg="gray", fg="white", borderwidth=5)
 e.grid(row = 13, column = 1)
 #e.insert(0, "Nimi: ")
 # rivi 1 -------------------------------------------
 l2 = Label(root, text = "Salasana:")
 l2.grid(row = 14, column = 0)
-e2 = Entry(root, width = 30, show = '*', bg="orange", fg="black", borderwidth=5)
+e2 = Entry(root, width = 30, show = '*', bg="gray", fg="white", borderwidth=5)
 e2.grid(row = 14, column = 1)
 #e2.insert(0, "Salasana: ")
 # rivi 2 -------------------------------------------

@@ -1,71 +1,66 @@
-# # Creating Input Fields
+# Creating a login function
+from tkinter import *
+import sqlite3, time
 
-# from tkinter import *
+def login():
+    while True:
+        username = input("Please enter your username: ")
+        password = input("Please enter your password: ")
+        with sqlite3.connect("Quiz.db") as db:
+            cursor = db.cursor()
+        find_user = ("SELECT * FROM user WHERE username = ? AND password = ?")
+        cursor.execute(find_user,[(username),(password)])
+        results = cursor.fetchall()
 
-# root = Tk()
+        if results:
+            for i in results:
+                print("Welcome "+i[2])
+            #return("exit")
+            break
 
-# def myClick1():
-#     myLabel = Label(root, text="Look! I cliked a Button!!")
-#     myLabel.pack()
+        else:
+            print("Username and password not recognised")
+            again = input("Do you want to try again?(y/n: ")
+            if again.lower() == "n":
+                print("Goodbye")
+                time.sleep(1)
+                #return("exit") 
+                break           
 
-# myButton = Button (root, text="Click Me", command=myClick1, bg="red", fg="green")
-# myButton.pack()
+login()
 
-# e = Entry(root, width=20, bg="white", fg="blue", borderwidth=5)
-# e.pack()
-# e.insert(0, "Enter Your Name: ")
+# Create new user funtion
+def newUser():
+    found = 0
+    while found == 0:
+        username = input("Please enter a username: ")
+        with sqlite3.connect("Quiz.db") as db:
+            cursor = db.cursor()
+        findUser = ("SELECT * FROM user WHERE username = ?")
+        cursor.execute(findUser, [{username}])
 
-# def myClick():
-#     hello = "Hello " + e.get()
-#     myLabel = Label(root, text=hello + " I like you!")
-#     myLabel.pack()
+        if cursor.fetchall():
+            print("User name Take, please try again") 
+        else:
+            found = 1
 
-# myButton = Button (root, text="Enter your Stock Quote", command=myClick, fg="blue", bg="green")
-# myButton.pack()
+    firstName = input("Enter your first name: ") 
+    surname = input("Enter your surname: ")
+    password = input("Please enter your password: ")
+    password1 = input("Please reenter your password: ") 
 
-# root.mainloop()
+    while password != password1:
+        print("Your password didn't match, plese try again") 
+        password = input("Please enter your password: ")
+        password1 = input("Please reenter your password: ") 
 
+    insetData = '''INSERT INTO user(username,firstname,surname,password
+    VALUES(?,?,?,?)'''
 
-import tkinter
-
-
-class Begueradj(tkinter.Frame):
-    def __init__(self, parent):
-        tkinter.Frame.__init__(self, parent)
-        self.parent = parent
-        self.main_queue = ["read", "clean dishes", "wash car"]
-        self.r = 0
-        self.initialize_user_interface()
-
-
-    def initialize_user_interface(self):
-        self.parent.title("Update GUI")
-        self.parent.grid_rowconfigure(0, weight = 1)
-        self.parent.grid_columnconfigure(0, weight = 1)
-
-        for e in self.main_queue:
-            tkinter.Label(self.parent, anchor = tkinter.W, text = e).grid(row = self.r, sticky = tkinter.W)
-            self.r+=1
-        self.entry_text = tkinter.Entry(self.parent)
-        self.entry_text.grid(row = 0, column = 1)
-        self.button_update = tkinter.Button(self.parent, text = "Update", command = self.update_gui).grid(row = 1, column = 1, sticky = tkinter.E)
-
-    def update_gui(self):
-        self.r+=1
-        self.main_queue.append(self.entry_text.get())
-        tkinter.Label(self.parent, anchor = tkinter.W, text = self.entry_text.get()).grid(row = self.r, sticky = tkinter.W)
-
-
-def main():
-    root = tkinter.Tk()
-    b = Begueradj(root)
-    root.mainloop()
-
-if __name__ == "__main__":
-    main()
-
-
-
+    cursor.execute(insetData,[(username),(firstName),(surname),(password)])
+    db.commit()
+              
+newUser()
 
 
 
