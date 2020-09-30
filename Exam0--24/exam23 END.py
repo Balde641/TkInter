@@ -5,7 +5,7 @@ import sqlite3
 
 root = Tk()
 root.title('Tietokanta')
-root.geometry("500x500")
+root.geometry("500x600")
 
 # Create a database or connect to one
 conn = sqlite3.connect('tasklist.db')
@@ -13,10 +13,16 @@ conn = sqlite3.connect('tasklist.db')
 # Create a cursor
 c = conn.cursor()
 
+c.execute("DROP TABLE IF EXISTS tasks")
+
 # Create table
 '''
 c.execute("""CREATE TABLE tasks (
-    task text
+    task_id INT,
+    ohjelmoida VARCHAR(20),
+    pisteet VARCHAR(20),
+    PRIMARY KEY(task_id INT_id)
+
 )
 """) 
 '''
@@ -178,6 +184,31 @@ conn.commit()
 # Close connection
 conn.close()
 
+#-----------------------------------
+    
+def query1():
+    # Create a database or connect to one
+    conn = sqlite3.connect('tasklist.db')
+    # Create a cursor
+    c = conn.cursor()
+
+    # Query the Database
+    c.execute("SELECT *, oid FROM tasks")
+    records = c.fetchall()
+
+    # Loop through Results
+    print_records = ''
+    for record in records:
+        print_records += str(record[0]) + "\t" + str(record[1]) + "\n"
+
+    query1_label = Label(root, text=print_records)
+    query1_label.grid(row=16, column=0, columnspan=2)    
+
+    # Commit Changes
+    conn.commit()
+    # Close connection
+    conn.close()
+
 
 # Ohjelmaan kirjautuminen---------------------------------DOWN CHECK
 
@@ -186,16 +217,21 @@ l = Label(root, text = "Käyttäjätunnus:")
 l.grid(row = 13, column = 0)
 e = Entry(root, width = 30, bg="orange", fg="black", borderwidth=5)
 e.grid(row = 13, column = 1)
-#e.insert(0, "Nimi: ")
+
 # rivi 1 -------------------------------------------
 l2 = Label(root, text = "Salasana:")
 l2.grid(row = 14, column = 0)
 e2 = Entry(root, width = 30, show = '*', bg="orange", fg="black", borderwidth=5)
 e2.grid(row = 14, column = 1)
-#e2.insert(0, "Salasana: ")
-# rivi 2 -------------------------------------------
-b = Button(root, text = "KIRJAUDU SISÄÄN", fg="green")
-b.grid(row = 15, column = 1)
 
-# pitää ikkunan näkyvissä kunnes tuhoamme sen
-root.mainloop() 
+# rivi 2 -------------------------------------------
+query1_b = Button(root, text = "KIRJAUDU SISÄÄN", command=query1, fg="green")
+query1_b.grid(row = 15, column = 1)
+
+# Create a Query Button
+#query_b = Button(root, text="KIRJAUDU SISÄÄN", command=query, fg="brown")
+#query_b.grid(row=15, column=1)
+#---------------------------------------------------
+
+
+root.mainloop()
