@@ -31,7 +31,7 @@ def login():
                 time.sleep(1)
                 #return("exit") 
                 break           
-login()
+
 root.mainloop()
 
 # Create new user function
