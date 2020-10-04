@@ -15,9 +15,9 @@ class Login_System:
 
         #===All Images
         self.bg_icon=ImageTk.PhotoImage(file="img3/log1.jpg")
-        self.user_icon=ImageTk.PhotoImage(file="user.png")
-        self.pass_icon=ImageTk.PhotoImage(file="pas.jpg")
-        self.pass2_icon=ImageTk.PhotoImage(file="log.png")
+        self.user_icon=ImageTk.PhotoImage(file="img3/userB.png")
+        self.pass_icon=ImageTk.PhotoImage(file="img3/pas.jpg")
+        self.pass2_icon=ImageTk.PhotoImage(file="img3/log.png")
 
 
         #====Variables==
