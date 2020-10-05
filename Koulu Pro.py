@@ -2,6 +2,11 @@
 from tkinter import *
 import sqlite3, time
 
+
+root = Tk()
+root.title('Tietokanta')
+root.geometry("500x600")
+
 def login():
     while True:
         username = input("Please enter your username: ")
@@ -27,40 +32,54 @@ def login():
                 #return("exit") 
                 break           
 
-login()
+root.mainloop()
 
-# Create new user funtion
-def newUser():
-    found = 0
-    while found == 0:
-        username = input("Please enter a username: ")
-        with sqlite3.connect("Quiz.db") as db:
-            cursor = db.cursor()
-        findUser = ("SELECT * FROM user WHERE username = ?")
-        cursor.execute(findUser, [{username}])
+# Create new user function
+# def newUser():
+#     found = 0
+#     while found == 0:
+#         username = input("Please enter a username: ")
+#         with sqlite3.connect("Quiz.db") as db:
+#             cursor = db.cursor()
+#         findUser = ("SELECT * FROM user WHERE username = ?")
+#         cursor.execute(findUser, [{username}])
 
-        if cursor.fetchall():
-            print("User name Take, please try again") 
-        else:
-            found = 1
+#         if cursor.fetchall():
+#             print("User name Take, please try again") 
+#         else:
+#             found = 1
 
-    firstName = input("Enter your first name: ") 
-    surname = input("Enter your surname: ")
-    password = input("Please enter your password: ")
-    password1 = input("Please reenter your password: ") 
+#     firstName = input("Enter your first name: ") 
+#     surname = input("Enter your surname: ")
+#     password = input("Please enter your password: ")
+#     password1 = input("Please reenter your password: ") 
 
-    while password != password1:
-        print("Your password didn't match, plese try again") 
-        password = input("Please enter your password: ")
-        password1 = input("Please reenter your password: ") 
+#     while password != password1:
+#         print("Your password didn't match, plese try again") 
+#         password = input("Please enter your password: ")
+#         password1 = input("Please reenter your password: ") 
 
-    insetData = '''INSERT INTO user(username,firstname,surname,password
-    VALUES(?,?,?,?)'''
+#     insetData = '''INSERT INTO user(username,firstname,surname,password
+#     VALUES(?,?,?,?)'''
 
-    cursor.execute(insetData,[(username),(firstName),(surname),(password)])
-    db.commit()
+#     cursor.execute(insetData,[(username),(firstName),(surname),(password)])
+#     db.commit()
               
-newUser()
+# newUser()
+
+# #1 Creating the database
+
+# with sqlite3.connect("Quiz,db") as db:
+#     cursor = db()
+
+# cursor.execute('''
+# CREATE TABLE IF NOT EXIST user(
+# userID INTEGER PRIMARY KEY,
+# username VARCHAR(20) NOT NULL,
+# firstname VARCHAR(20) NOT NULL, 
+# surname VARCHAR(20) NOT NULL,
+# password VARCHAR(20) NOT NULL,     
+# )''')    
 
 
 
