@@ -16,7 +16,7 @@ c = conn.cursor()
 # Create table
 '''
 c.execute("""CREATE TABLE tasks (
-    task text
+    tasks text
 )
 """) 
 '''
